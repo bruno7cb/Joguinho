@@ -1,9 +1,11 @@
-import sys
 import pygame
+import funcoes_Jogo as fc
 from configuracoes import Configuracoes
 from personagem import Personagem
 from pontuacoes import Pontuacoes
 from paredes import Paredes
+from personagem2 import Personagem2
+
 
 def rodar_jogo():
     # Inicia o jogo
@@ -18,17 +20,13 @@ def rodar_jogo():
         (configuracoes.janela_largura, configuracoes.janela_altura))
     pygame.display.set_caption("Titulo")
 
+    personagem2 = Personagem2(janela)
+
     while True:
-        # Laço principal do jogo
-
+        fc.verificar_Funcoes()
+        fc.atualizacao_Tela(configuracoes, janela, personagem2)
+        #pygame.draw.circle(janela, personagem.cor, personagem.dimensoes, personagem.raio)
+        #pygame.draw.rect(janela, pontuacoes.cor, pontuacoes.dimensoes)
+        #pygame.draw.line(janela, paredes.cor, paredes.xCoord, paredes.yCoord, paredes.largura)
         
-         
-        janela.fill(configuracoes.cor_bg)
-
-        pygame.draw.circle(janela, personagem.cor, personagem.dimensoes, personagem.raio)
-        pygame.draw.rect(janela, pontuacoes.cor, pontuacoes.dimensoes)
-        pygame.draw.line(janela, paredes.cor, paredes.xCoord, paredes.yCoord, paredes.largura)
-
-        pygame.display.flip() # Atualiza a tela
-
 rodar_jogo()
